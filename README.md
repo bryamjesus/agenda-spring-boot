@@ -1,1 +1,1 @@
-# agenda-spring-boot
+# Agenda
