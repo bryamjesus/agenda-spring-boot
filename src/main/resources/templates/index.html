@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,6 +8,37 @@
     <title>Inicio</title>
 </head>
 <body>
-<h1>Hola mundo</h1>
+<div th:if="${msgExito != null}">
+    [[${msgExito}]]
+</div>
+<h3>Mi lista de contactos</h3>
+
+<a href="/nuevo">
+    Nuevo contacto
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Celular</th>
+        <th>Email</th>
+        <th>F. Nacimiento</th>
+        <th>F. Registro</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contacto : ${contactos}">
+        <th th:text="${contacto.id}"></th>
+        <th th:text="${contacto.nombre}"></th>
+        <th th:text="${contacto.celular}"></th>
+        <th th:text="${contacto.email}"></th>
+        <th th:text="${#temporals.format(contacto.fechaNacimiento, 'dd/MM/YYYY')}"></th>
+        <th th:text="${#temporals.format(contacto.fechaRegistro, 'dd/MM/YYYY hh:mm a')}"></th>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>
