@@ -33,16 +33,20 @@
             <th>Email</th>
             <th>F. Nacimiento</th>
             <th>F. Registro</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="contacto : ${contactos}">
-            <th th:text="${contacto.id}"></th>
-            <th th:text="${contacto.nombre}"></th>
-            <th th:text="${contacto.celular}"></th>
-            <th th:text="${contacto.email}"></th>
-            <th th:text="${#temporals.format(contacto.fechaNacimiento, 'dd/MM/YYYY')}"></th>
-            <th th:text="${#temporals.format(contacto.fechaRegistro, 'dd/MM/YYYY hh:mm a')}"></th>
+            <td th:text="${contacto.id}"></td>
+            <td th:text="${contacto.nombre}"></td>
+            <td th:text="${contacto.celular}"></td>
+            <td th:text="${contacto.email}"></td>
+            <td th:text="${#temporals.format(contacto.fechaNacimiento, 'dd/MM/YYYY')}"></td>
+            <td th:text="${#temporals.format(contacto.fechaRegistro, 'dd/MM/YYYY hh:mm a')}"></td>
+            <td class="text-end">
+                <a th:href="@{/{id}/editar(id=${contacto.id})}">Editar</a>
+            </td>
         </tr>
         </tbody>
     </table>
